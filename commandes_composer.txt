@@ -1,0 +1,41 @@
+************* Création d'un projet avec composer **************************
+composer create-project symfony/website-skeleton monprojet1 5.4.*
+
+
+************* Démarrer le serveur de développement (Ctrl C pour arrêter) **************************
+symfony serve
+
+
+************* Créer la base de données **************************
+php bin/console doctrine:database:create
+
+
+************* Mettre à jour le schéma de la base de données **************************
+php bin/console doctrine:schema:update --force
+
+
+************* Assistant de génération d'entité **************************
+php bin/console make:entity client
+
+
+************* Générer un contrôleur **************************
+php bin/console make:controller catalogue
+
+
+*************  Générer des entités à partir de la base de données (existante) **************************
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity
+
+
+************* Générer ou regénérer les accesseurs (get/set)  **************************
+php bin/console make:entity --regenerate --overwrite "App\Entity"
+
+
+************* Générer les scripts SQL de création de la base  **************************
+php bin/console make:migration
+
+
+*************  Exécuter les scripts de création de la base **************************
+php bin/console doctrine:migrations:migrate
+
+
+*************   **************************

@@ -7,6 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Artist;
 use App\Entity\Disc;
 
+
 class Jeu1 extends Fixture
 {
     public function load(ObjectManager $manager): void

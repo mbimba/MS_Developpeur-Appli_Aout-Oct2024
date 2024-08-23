@@ -1,0 +1,175 @@
+                                                        ************* COMMANDES **************************
+
+************* Vérification des prérequis  **************************
+symfony check:requirements
+
+Cette commande vérifie que votre système a tous les outils nécessaires pour exécuter une application Symfony.
+
+
+************* Création d'un projet à la version webapp 6.4 de Symfony  **************************
+symfony new MonProjet --version="6.4.*" --webapp
+
+Cette commande crée un nouveau projet Symfony avec toutes les fonctionnalités web essentielles.
+
+
+*************  Démarrer le serveur de développement (Ctrl C pour arrêter) **************************
+symfony serve
+
+Le serveur est accessible à l'adresse http://127.0.0.1:8000.
+
+
+************* Démarrer le serveur de développement en mode daemon (en arrière-plan)  **************************
+symfony serve -d
+
+
+************* Le serveur web local de Symfony supporte HTTPS nativement. Cependant, pour établir une connexion sécurisée HTTPS, un certificat TLS (Transport Layer Security) est requis. Symfony simplifie la création et l'installation de ce certificat via une commande dédiée. Ce certificat est auto-signé et destiné uniquement à un usage de développement local.  **************************
+symfony server:ca:install
+
+
+************* Arrêter les serveurs Symfony  **************************
+symfony server:stop
+
+
+*************  Vérifier le statut du serveur **************************
+symfony server:status
+
+
+************* Installation de composants supplémentaires : Twig  **************************
+composer require symfony/twig-bundle
+
+************* Installation de composants supplémentaires : MakerBundle (en mode développement)  **************************
+composer require symfony/maker-bundle --dev
+
+************* Création d'un contrôleur nommé MonControlleur  **************************
+symfony console make:controller MonControlleur
+
+************* Lister toutes les routes de l'application  **************************
+php bin/console debug:router
+
+*************  Installation de Doctrine ORM **************************
+composer require symfony/orm-pack:*
+
+
+************* Configuration de la base de données  **************************
+Modifiez le fichier .env.local :
+DATABASE_URL="mysql://Utilisateur:MotDePasse@127.0.0.1:3306/village_green?serverVersion=mariadb-10.6.7&charset=utf8mb4"
+
+
+*************  Créer la base de données **************************
+php bin/console doctrine:database:create
+
+*************  Supprimer la base de données **************************
+php bin/console doctrine:database:drop --force
+
+************* Assistant de génération d'entité  **************************
+php bin/console make:entity MonEntity
+
+*************  Mettre à jour une entité **************************
+php bin/console make:entity MonEntity --regenerate
+
+*************  Mettre à jour le schéma de la base de données **************************
+php bin/console doctrine:schema:update --force
+
+************* Générer les scripts SQL de création de la base  **************************
+php bin/console make:migration
+
+************* Exécuter les scripts de création de la base  **************************
+php bin/console doctrine:migrations:migrate
+
+************* Installation de fixtures et Faker pour les données de test  **************************
+composer require --dev orm-fixtures
+composer require fakerphp/faker
+
+*************  Charger les fixtures **************************
+php bin/console doctrine:fixtures:load
+
+************* Création de formulaires  **************************
+symfony console make:form
+
+************* Génération d'un CRUD  **************************
+symfony console make:crud
+
+*************  Gestion des utilisateurs **************************
+symfony console make:user
+symfony console make:auth
+
+************* Installation du bundle de vérification d'email  **************************
+composer require symfonycasts/verify-email-bundle
+
+*************  Création d'un formulaire d'inscription **************************
+symfony console make:registration-form
+
+************* Nettoyage du cache de l'application  **************************
+symfony console cache:clear
+php bin/console cache:clear
+
+Ces deux commandes sont strictement identiques.
+
+
+*************   **************************
+
+
+*************   **************************
+
+*************   **************************
+
+*************   **************************
+
+*************   **************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+composer create-project symfony/website-skeleton monprojet1 5.4.*
+
+
+************* Démarrer le serveur de développement (Ctrl C pour arrêter) **************************
+symfony serve
+
+
+************* Créer la base de données **************************
+php bin/console doctrine:database:create
+
+
+************* Mettre à jour le schéma de la base de données **************************
+php bin/console doctrine:schema:update --force
+
+
+************* Assistant de génération d'entité **************************
+php bin/console make:entity client
+
+
+************* Générer un contrôleur **************************
+php bin/console make:controller catalogue
+
+
+*************  Générer des entités à partir de la base de données (existante) **************************
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity
+
+
+************* Générer ou regénérer les accesseurs (get/set)  **************************
+php bin/console make:entity --regenerate --overwrite "App\Entity"
+
+
+************* Générer les scripts SQL de création de la base  **************************
+php bin/console make:migration
+
+
+*************  Exécuter les scripts de création de la base **************************
+php bin/console doctrine:migrations:migrate
+
+
+*************   **************************

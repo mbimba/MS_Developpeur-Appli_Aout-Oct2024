@@ -9,6 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ContactFormType extends AbstractType
 {
@@ -40,4 +42,19 @@ class ContactFormType extends AbstractType
             'data_class' => Contact::class,
         ]);
     }
+
+
+
+
+
+    public function delete(Request $request): Response
+{
+    $submittedToken = $request->request->get('token');
+
+    // 'delete-item' est identique à la valeur utilisée dans la vue pour générer le token 
+    if ($this->isCsrfTokenValid('delete-item', $submittedToken)) {
+        // ... le corps de la fonction
+    }
+}
+
 }
